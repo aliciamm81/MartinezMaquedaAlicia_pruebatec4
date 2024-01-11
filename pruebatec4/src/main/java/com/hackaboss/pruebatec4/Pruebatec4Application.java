@@ -16,7 +16,7 @@ public class Pruebatec4Application {
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI().info(new Info()
-                .title("API Agencia de viajes")
+                .title("API agencia de viajes")
                 .version("0.0.1")
                 .description("Aplicación para gestionar reservas de hoteles y vuelos"));
     }

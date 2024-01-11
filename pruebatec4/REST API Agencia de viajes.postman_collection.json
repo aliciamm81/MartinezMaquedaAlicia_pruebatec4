@@ -1,0 +1,1173 @@
+{
+	"info": {
+		"_postman_id": "1788376b-77a7-4339-bf35-60ecd3d2ccdd",
+		"name": "REST API Agencia de viajes",
+		"description": "# 🚀 Comienza aquí\n\nEsta plantilla te guía a través de las operaciones CRUD (GET, POST, PUT, DELETE), variables y pruebas.\n\n## 🔖 Como usar esta plantilla\n\n#### **Step 1: Envía solicitudes**\n\nLas API RESTful te permiten realizar operaciones CRUD mediante los métodos HTTP POST, GET, PUT y DELETE.  \nEsta colección contiene cada uno de estos tipos de solicitud. Abre cada solicitud y haz clic en \"Enviar\" para ver qué sucede.\n\n#### **Step 2:** Observa las respuestas\n\nObserva la pestaña de respuesta para ver el código de estado (200 OK), el tiempo de respuesta y el tamaño.\n\n#### **Step 3:** Envía nuevos datos en el cuerpo\n\nActualiza o agrega nuevos datos en el \"Cuerpo\" en la solicitud POST. Normalmente, los datos del cuerpo también se usan en la solicitud PUT\n\nTexto sin formato\n\n```\n{\n    \"nombre\": \"Nombre de tu hotel\",\n    \"ciudad\": \"Nombre de la ciudad\",\n    \"descripcion\": \"Descripción de tu hotel\"\n}\n\n ```\n\n#### **Step 4:** Agrega pruebas en la pestaña \"Pruebas\"\n\nLas pruebas te ayudan a confirmar que tu API está funcionando como se espera. Puedes escribir scripts de prueba en JavaScript y ver la salida en la pestaña \"Resultados de prueba\".\n\n💪 Consejos profesionales  \nUtiliza carpetas para agrupar solicitudes relacionadas y organizar la colección.  \nAgrega más scripts en \"Pruebas\" para verificar si la API funciona según lo esperado y ejecutar flujos de trabajo.\n\n💡 Plantillas relacionadas  \nConceptos básicos de pruebas de API  \nDocumentación de API  \nMétodos de autorización",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26107817",
+		"_collection_link": "https://cloudy-trinity-585038.postman.co/workspace/Hackaboss~21d6c910-4406-466a-abe1-f0ff6b8cc269/collection/26107817-1788376b-77a7-4339-bf35-60ecd3d2ccdd?action=share&source=collection_link&creator=26107817"
+	},
+	"item": [
+		{
+			"name": "Hotel",
+			"item": [
+				{
+					"name": "Habitaciones",
+					"item": [
+						{
+							"name": "Crear habitaciones",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "1234",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "admin",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"codHotel\": \"AR-0002\",\r\n    \"codigo\": \"AR-0002-001\",\r\n    \"tipo\": \"doble\",\r\n    \"descripcion\": \"habitacion con baño privado y vistas al mar\",\r\n    \"precio\": 630.0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/agencia/hoteles/habitaciones/nuevo",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"agencia",
+										"hoteles",
+										"habitaciones",
+										"nuevo"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Eliminar habitacion por Id",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "1234",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "admin",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/agencia/hoteles/habitaciones/eliminar/154",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"agencia",
+										"hoteles",
+										"habitaciones",
+										"eliminar",
+										"154"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actualizar habitacion por Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful PUT request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "1234",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "admin",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"codHotel\": \"PÑ-0001\",\n    \"codigo\": \"PÑ-0001-0016\",\n    \"tipo\": \"triple\",\n    \"descripcion\": \"Un lugar maravilloso donde pasar tus vacaciones\",\n    \"precio\": 125.0\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/agencia/hoteles/habitaciones/actualizar/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"agencia",
+										"hoteles",
+										"habitaciones",
+										"actualizar",
+										"1"
+									]
+								},
+								"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener listado habitaciones",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/agencia/hoteles/habitaciones",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"agencia",
+										"hoteles",
+										"habitaciones"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener habitaciones por hotel",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "1234",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "admin",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/agencia/hoteles/habitaciones/hotel/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"agencia",
+										"hoteles",
+										"habitaciones",
+										"hotel",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener habitaciones por Id",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "1234",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "admin",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/agencia/hoteles/habitaciones/hotel/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"agencia",
+										"hoteles",
+										"habitaciones",
+										"hotel",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Reservas",
+					"item": [
+						{
+							"name": "Crear reserva hotel",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "1234",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "admin",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"fechaDesde\": \"18-09-2024\",\r\n  \"fechaHasta\": \"21-09-2024\",\r\n  \"numPersonas\": 2,\r\n  \"nombre\": \"Juanñ\",\r\n  \"apellido\": \"Caca\",\r\n  \"dni\": \"12346986A\",\r\n  \"email\": \"juan@example.com\",\r\n  \"telefono\": 677154523,\r\n  \"numTarjeta\": 156454444423456,\r\n  \"codigoHabitacion\": \"PÑ-0014-0001\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/agencia/reserva-hotel/nuevo",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"agencia",
+										"reserva-hotel",
+										"nuevo"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Eliminar reserva hotel por Id",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "1234",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "admin",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/agencia/reserva-hotel/eliminar/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"agencia",
+										"reserva-hotel",
+										"eliminar",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actualizar reserva hotel por Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful PUT request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "1234",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "admin",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"fechaDesde\": \"16-09-2024\",\n    \"fechaHasta\": \"17-09-2024\",\n    \"noches\": 3,\n    \"numPersonas\": 3\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/agencia/reserva-hotel/actualizar/354",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"agencia",
+										"reserva-hotel",
+										"actualizar",
+										"354"
+									]
+								},
+								"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener reservas hoteles",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "1234",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "admin",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/agencia/reserva-hotel",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"agencia",
+										"reserva-hotel"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener reservas hotel por Id hotel",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "1234",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "admin",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/agencia/reserva-hotel/hotel/354",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"agencia",
+										"reserva-hotel",
+										"hotel",
+										"354"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener reservas por Id",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "1234",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "admin",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/agencia/reserva-hotel/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"agencia",
+										"reserva-hotel",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Crear hoteles",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"codigo\": \"AR-0002\",\n  \"nombre\": \"Atlantis Resort\",\n  \"ciudad\": \"Miami\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/agencia/hoteles/nuevo",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agencia",
+								"hoteles",
+								"nuevo"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar hotel por Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/agencia/hoteles/actualizar/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agencia",
+								"hoteles",
+								"actualizar",
+								"1"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar hotel por Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/agencia/hoteles/eliminar/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agencia",
+								"hoteles",
+								"eliminar",
+								"1"
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener listado hoteles",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/agencia/hoteles",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agencia",
+								"hoteles"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener hotel por Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/agencia/hoteles/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agencia",
+								"hoteles",
+								"1"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener hoteles disponibles destino y fechas",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/agencia/hoteles/buscar?fechaDesde=10-09-2024&fechaHasta=12-09-2024&destino=Miami",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agencia",
+								"hoteles",
+								"buscar"
+							],
+							"query": [
+								{
+									"key": "fechaDesde",
+									"value": "10-09-2024"
+								},
+								{
+									"key": "fechaHasta",
+									"value": "12-09-2024"
+								},
+								{
+									"key": "destino",
+									"value": "Miami"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vuelo",
+			"item": [
+				{
+					"name": "Reservas",
+					"item": [
+						{
+							"name": "Crear reserva vuelo",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"numPersonas\": 5,\r\n  \"tipoAsiento\": \"economico\",\r\n  \"fecha\": \"11-01-2024\",\r\n  \"origen\": \"Madrid\",\r\n  \"destino\": \"Valencia\",\r\n  \"nombre\": \"Juan\",\r\n  \"apellido\": \"Pérez\",\r\n  \"dni\": \"12345699A\",\r\n  \"email\": \"juan@example.com\",\r\n  \"telefono\": 123455456789,\r\n  \"numTarjeta\": 1234554564456789\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/agencia/reserva-vuelo/nuevo",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"agencia",
+										"reserva-vuelo",
+										"nuevo"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener reservas vuelos",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/agencia/reserva-vuelo",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"agencia",
+										"reserva-vuelo"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Eliminar reserva vuelo por Id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/agencia/reserva-vuelo/eliminar/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"agencia",
+										"reserva-vuelo",
+										"eliminar",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actualizar reserva vuelo por Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful PUT request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "1234",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "admin",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"numPersonas\": 3,\n    \"tipoAsiento\" : \"premium\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/agencia/reserva-vuelo/actualizar/354",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"agencia",
+										"reserva-vuelo",
+										"actualizar",
+										"354"
+									]
+								},
+								"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Crear vuelo",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"numVuelo\" : \"NYMA-3625\",\r\n  \"origen\": \"Nueva-York\",\r\n  \"destino\": \"Madrid\",\r\n  \"fecha\": \"2024-01-02\",\r\n  \"asientosEconomicos\": 100,\r\n  \"precioAsientoEconomico\": 100.0,\r\n  \"asientosPremium\": 20,\r\n  \"precioAsientoPremium\": 200.0\r\n\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/agencia/vuelos/nuevo",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agencia",
+								"vuelos",
+								"nuevo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar vuelo por Id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"destino\":\"Nueva York\",\r\n    \"fecha\":\"2024-01-24\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/agencia/vuelos/actualizar/{id}",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agencia",
+								"vuelos",
+								"actualizar",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar vuelo por Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/agencia/vuelos/eliminar/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agencia",
+								"vuelos",
+								"eliminar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener vuelos disponibles fecha y destino",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/agencia/vuelos/buscar?fechaDesde=01-02-2024&fechaHasta=31-02-2024&origen=Barcelona&destino=Miami",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agencia",
+								"vuelos",
+								"buscar"
+							],
+							"query": [
+								{
+									"key": "fechaDesde",
+									"value": "01-02-2024",
+									"description": "\n"
+								},
+								{
+									"key": "fechaHasta",
+									"value": "31-02-2024"
+								},
+								{
+									"key": "origen",
+									"value": "Barcelona"
+								},
+								{
+									"key": "destino",
+									"value": "Miami"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener listado vuelos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/agencia/vuelos",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agencia",
+								"vuelos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener vuelo por Id",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/agencia/vuelos/102",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agencia",
+								"vuelos",
+								"102"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		}
+	]
+}

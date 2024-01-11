@@ -13,11 +13,13 @@ import java.util.Optional;
 public interface VueloRepository extends JpaRepository<Vuelo, Long> {
 
     @Query("SELECT v FROM Vuelo v " +
-            "WHERE v.origen=:origen AND v.destino=:destino " +
-            "AND v.fecha >= :fechaDesde AND v.fecha <= :fechaHasta " +
+            "WHERE v.origen = :origen " +
+            "AND v.destino = :destino " +
+            "AND v.fecha >= :fechaDesde " +
+            "AND v.fecha <= :fechaHasta " +
             "AND (v.asientosEconomicosDisponibles > 0 OR v.asientosPremiumDisponibles > 0) " +
-            "AND v.fechaBaja is null ")
-    List<Vuelo> findVuelosDisponibles(
+            "AND v.fechaBaja IS NULL ")
+    Optional<List<Vuelo>> findVuelosDisponibles(
             LocalDate fechaDesde,
             LocalDate fechaHasta,
             String origen,
