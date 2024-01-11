@@ -249,7 +249,7 @@ Se introduce el siguiente Json en postman a través de la ruta localhost:8080/ag
 Hotel creado correctamente
 ```
 
-*Crear habitación de hotel: *
+*Crear habitación de hotel:*
 
 Se introduce el siguiente JSON en postman a través de la ruta localhost:8080/agencia/hoteles/habitaciones/nuevo
 
@@ -412,7 +412,7 @@ localhost:8080/agencia/vuelos
 *Crear una reserva de vuelo:*
 
 Se introduce el siguiente JSON en la ruta localhost:8080/agencia/reserva-vuelo/nuevo
-
+```
 {
 "numPersonas": 5,
 "tipoAsiento": "economico",
@@ -426,7 +426,7 @@ Se introduce el siguiente JSON en la ruta localhost:8080/agencia/reserva-vuelo/n
 "telefono": 123455456789,
 "numTarjeta": 1234554564456789
 }
-
+```
 #### Resultado obtenido:
 
 ```
@@ -465,7 +465,7 @@ localhost:8080/agencia/vuelos/buscar?fechaDesde=01-02-2024&fechaHasta=31-02-2024
 ]
 ```
 
-## Mejora Prevista para el Siguiente Sprint 🔧
+## Mejora Prevista para los Siguientes Sprints 🔧
 
 En la próxima iteración, planeo implementar las siguientes mejoras en la aplicación:
 
