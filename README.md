@@ -106,6 +106,14 @@ La aplicación proporciona los siguientes endpoints:
         GET /agencia/reserva-vuelo - Obtener todas las reservas de vuelo
         GET /agencia/reserva-vuelo/{id} - Obtener reserva de vuelo por ID
         DELETE /agencia/reserva-vuelo/eliminar/{id} - Eliminar reserva de vuelo por ID
+      
+    Hoteles: 
+        PUT /agencia/hoteles/actualizar/{id} - Actualizar un hotel por ID
+        POST /agencia/hoteles/nuevo - Crear un hotel nuevo
+        GET /agencia/hoteles - Obtener todos los hoteles
+        GET /agencia/hoteles/{id} - Obtener un hotel por su ID
+        GET /agencia/hoteles/buscar - Obtener hoteles disponibles por fechas y destino
+        DELETE /agencia/hoteles/eliminar/{id} - Eliminar un hotel por ID
 
     Reservas de Hotel:
         PUT /agencia/reserva-hotel/actualizar/{id} - Actualizar reserva de hotel por ID de reserva
@@ -519,6 +527,12 @@ como pasa ahora los datos de usuarioBaja o fechaBaja que son innecesarios.
 Se tiene previsto crear un archivo Docker posteriormente para facilitar el despliegue de la aplicación. Actualmente,
 se enfrentan dificultades con la conexión entre la aplicación, MySQL y phpMyAdmin en Docker, las cuales se abordarán
 y resolverán para asegurar un despliegue exitoso.
+
+### Ajustes en Swagger 
+
+Se realizará unos ajustes en la documentación de Swagger para que los casos de ejemplo que muestra seán ejemplos reales
+y fáciles de entender, para ello se utilizará Schemas tal como se indica en la documentación y tengo estudiar para ver 
+como se aplica. https://swagger.io/docs/specification/data-models/
 
 ## Versionado 📌
 
