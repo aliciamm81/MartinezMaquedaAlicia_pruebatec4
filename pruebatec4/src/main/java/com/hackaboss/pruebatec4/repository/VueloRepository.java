@@ -26,6 +26,7 @@ public interface VueloRepository extends JpaRepository<Vuelo, Long> {
             String destino
     );
 
+
     @Query("SELECT v FROM Vuelo v " +
             "WHERE v.origen = :origen AND v.destino = :destino " +
             "AND v.fecha = :fecha " +
@@ -37,8 +38,10 @@ public interface VueloRepository extends JpaRepository<Vuelo, Long> {
             String destino,
             Integer numPersonas
     );
-
-    @Query("SELECT CASE WHEN COUNT(rv) > 0 THEN true ELSE false END " +
+    
+    @Query("SELECT CASE WHEN COUNT(rv.id) > 0 THEN " +
+            "CASE WHEN SUM(CASE WHEN rv.fechaBaja IS NOT NULL THEN 1 ELSE 0 END) > 0 THEN false ELSE true END " +
+            "ELSE false END " +
             "FROM ReservaVuelo rv " +
             "WHERE rv.vuelo.id = :idVuelo AND rv.vuelo.fecha > :fechaActual")
     boolean existsReservasPosterioresParaVuelo(Long idVuelo, LocalDate fechaActual);

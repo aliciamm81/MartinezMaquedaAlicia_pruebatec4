@@ -48,9 +48,11 @@ public class VueloService implements IVueloService {
                                              String origen,
                                              String destino) throws VueloException {
         List<Vuelo> vuelos = vueloRepository.findVuelosDisponibles(fechaDesde, fechaHasta, origen, destino).orElse(null);
+
         if (vuelos.isEmpty()) {
             throw new VueloException("No hay vuelos que cumplan estos criterios en la base de datos");
         }
+
         return vuelos;
     }
 
